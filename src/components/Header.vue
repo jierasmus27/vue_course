@@ -4,7 +4,7 @@
             <div class="navbar-header">
                 <router-link class="navbar-brand" to="/">Brand</router-link>
             </div>
-
+            <strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <router-link to="/portfolio" tag="li" activeClass="active"><a>Portfolio</a></router-link>
@@ -22,6 +22,11 @@
 
 <script>
 export default {
+    computed: {
+        funds() {
+            return this.$store.getters.funds;
+        }
+    }
 
 }
 </script>

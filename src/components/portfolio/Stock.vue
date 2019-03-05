@@ -19,7 +19,7 @@
                     <button
                         class="btn btn-success"
                         @click="sellStock"
-                        :disabled="quantity <= 0 || !Number.isInteger(+quantity)">
+                        :disabled="inValid">
                         Sell
                     </button>
                 </div>
@@ -49,6 +49,12 @@ export default {
                 quantity: this.quantity
             }
             this.sellOrder(order);
+        }
+    },
+    computed: {
+        inValid() {
+            console.log(this.stock.quantity);
+            return this.quantity <= 0 || !Number.isInteger(+this.quantity) || (+this.quantity > +this.stock.quantity);
         }
     }
 }
